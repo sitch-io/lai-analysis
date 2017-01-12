@@ -18,3 +18,19 @@ http://opencellid.org/#action=database.downloadDatabase
 Place the OpenCellID database at `lai-study/data/source`.  It should be named
 `cell_towers.csv.gz` when you download it.  Just move it into place without
 decompressing or renaming it.
+
+
+This is written for Python 2.7.  Required modules:
+
+* celery
+* haversine
+* pykml
+* twilio
+
+The towers_by_lai file is the first stage.  It places the feed in files by LAI,
+ready to be processed by report_outliers.py.  The report_outliers.py script
+feeds rabbitmq on localhost, and you'll need to run
+`celery worker -A celeryutils` to process the jobs.  If you want a nice web
+interface to watch the jobs go by, install flower (from pip) and
+`celery flower -A celeryutils`.  Go to the URL that comes up after starting
+and you'll be able to adjust your queues, etc...
