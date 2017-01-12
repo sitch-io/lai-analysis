@@ -15,7 +15,7 @@ that's where we get the information to correlate MCC+MNC with the owning
 provider.  You will also need to get a copy of the OpenCellID database from
 http://opencellid.org/#action=database.downloadDatabase
 
-Place the OpenCellID database at `lai-study/data/source`.  It should be named
+Place the OpenCellID database at `lai-analysis/data/source`.  It should be named
 `cell_towers.csv.gz` when you download it.  Just move it into place without
 decompressing or renaming it.
 
