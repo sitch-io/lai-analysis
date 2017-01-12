@@ -1,2 +1,5 @@
+*.prof
+.cache
 *.pyc
 data/*
+reports/*

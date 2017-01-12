@@ -1,5 +1,7 @@
 import csv
+import gzip
 import os
+import shutil
 import time
 
 
@@ -47,3 +49,14 @@ class OutfileHandler(object):
         if not os.path.exists(dirpath):
             os.makedirs(dirpath)
             time.sleep(1)
+
+    @classmethod
+    def compress_and_remove_original(infiles):
+        for uncompressed in infiles:
+            infile = uncompressed
+            outfile = "%s.gz" % infile
+            with open(infile, 'rb') as f_in, gzip.open(outfile, 'wb') as f_out:
+                shutil.copyfileobj(f_in, f_out)
+            print "Written: %s" % outfile
+            os.remove(infile)
+            print "Removed: %s" % infile
