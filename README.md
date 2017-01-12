@@ -34,3 +34,9 @@ feeds rabbitmq on localhost, and you'll need to run
 interface to watch the jobs go by, install flower (from pip) and
 `celery flower -A celeryutils`.  Go to the URL that comes up after starting
 and you'll be able to adjust your queues, etc...
+
+Profiling
+
+Navigate to code/tests/profile and run
+`python -m cProfile -o profile_data.pyprof profile_process_one_file.py`, and
+then dissect it with Kcachegrind or Qcachegrind.
