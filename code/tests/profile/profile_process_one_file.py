@@ -11,4 +11,4 @@ laiutils = imp.load_module(modulename, file, pathname, description)
 test_file = os.path.join(here_dir, "../fixture/310-410-65534.csv.gz")
 
 carrier_name = "56k v.92 modemzzz"
-lai_report = laiutils.Utility.create_lai_report(test_file, carrier_name)
+laiutils.Utility.create_lai_report(test_file, carrier_name, True)

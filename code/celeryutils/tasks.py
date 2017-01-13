@@ -17,6 +17,7 @@ def process_feed_file(feed_file, carrier_reference, base_path):
                       "range", "samples", "changeable", "created", "updated",
                       "averageSignal"]
     outfile_columns = ["subject_CGI", "distance", "nearest_CGI"]
+    debug = False
     carrier_reference = carrier_reference
     distance_threshold = 30000
     print("Processing %s" % feed_file)
@@ -24,7 +25,7 @@ def process_feed_file(feed_file, carrier_reference, base_path):
     carrier = laiutils.FeedProcessor.get_carrier_name(mcc, mnc, carrier_reference)
     report_file_name = laiutils.Utility.build_report_file_name(mcc, mnc, lac,
                                                                csv_out_dir)
-    report = laiutils.Utility.create_lai_report(feed_file, carrier)
+    report = laiutils.Utility.create_lai_report(feed_file, carrier, debug)
     laiutils.Report.write_lai_report(report, report_file_name)
     laiutils.Report.write_lai_report_md(report, report_file_name, carrier,
                                         distance_threshold)

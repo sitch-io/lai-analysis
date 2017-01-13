@@ -2,17 +2,10 @@ from __future__ import absolute_import, unicode_literals
 import os
 import laiutils
 from celeryutils import tasks
-# from celery import Celery
-
-# app = Celery(broker="ampq://guest:guest@localhost:5672",
-#              include=["celeryutils.tasks"])
-
-# CGI with nearest in-LAC CGI
-# CGIs that don't have another CGI in-LAC within 30km
 
 
 def main():
-    tgt_job = laiutils.FeedProcessor.process_source_file
+    # tgt_job = laiutils.FeedProcessor.process_source_file
     twilio_object = laiutils.TwilioCarriers(os.getenv("TWILIO_SID"),
                                             os.getenv("TWILIO_TOKEN"))
     twilio_object.initialize_carrier_reference("US")
