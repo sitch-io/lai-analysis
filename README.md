@@ -1,13 +1,17 @@
 # LAI Study
 ## Using OpenCellID to determine geofence for LAI
 
+
+There are two submodules to this git repo!
+
 So far, there are two scripts of interest:
 
 * towers_by_lai.py: Breaks OpenCellID DB into files for each LAI, in CSV and
-  KML format.
+  KML format.  KML goes into the submodule rooted at `data/derived/kml`.
 * report_outliers.py: Takes the files produced by the first script and produces
   CSV and MD reports on nearest neighbor CGI, with distances beyond 30km
-  appearing in bold on MD reports.
+  appearing in bold on MD reports.  These files go into the other submodule,
+  rooted at `reports/`
 
 
 In order to run these scripts, you will need API access to Twilio, because
@@ -28,9 +32,10 @@ This is written for Python 2.7.  Required modules:
 * twilio
 
 The towers_by_lai file is the first stage.  It places the feed in files by LAI,
-ready to be processed by report_outliers.py.  The report_outliers.py script
-feeds rabbitmq on localhost, and you'll need to run
-`celery worker -A celeryutils` to process the jobs.  If you want a nice web
+ready to be processed by report_outliers.py.  
+
+The report_outliers.py script feeds rabbitmq on localhost, and you'll need to
+run `celery worker -A celeryutils` to process the jobs.  If you want a nice web
 interface to watch the jobs go by, install flower (from pip) and
 `celery flower -A celeryutils`.  Go to the URL that comes up after starting
 and you'll be able to adjust your queues, etc...
