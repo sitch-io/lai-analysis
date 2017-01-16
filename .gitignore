@@ -3,3 +3,6 @@
 *.pyc
 data/*
 reports/*
+*.csv
+*.kml
+*.gz
