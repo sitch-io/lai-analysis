@@ -3,6 +3,8 @@ import operator
 import os
 from geo_util import GeoUtil as geo
 from ocid_csv import OcidCsv as OcidCsv
+
+
 class Utility(object):
     @classmethod
     def mcc_mnc_lac_from_filename(cls, filename):
@@ -52,12 +54,6 @@ class Utility(object):
                     right_cgi = Utility.cgi_from_ocid_row(right)
                     distance = dist_calc(left["lon"], left["lat"],
                                          right["lon"], right["lat"])
-                    # if not (left_cgi, right_cgi, distance) in prelim:
-                    #     if not (right_cgi, left_cgi, distance) in prelim:
-                    #        measurement = (left_cgi, right_cgi, distance)
-                    #        prelim.append(measurement)
-                    # measurement = {left_cgi: {right_cgi: distance}}
-                    # prelim.append(measurement)
                     prelim[left_cgi][right_cgi] = distance
                 except ValueError as e:
                     message = "Trouble processing %s.  Error: %s" % (str(right), e)
@@ -88,42 +84,6 @@ class Utility(object):
         return final
 
     @classmethod
-    def transform_prelim_into_final_OLD(cls, prelim, debug):
-        final = {}
-        prelim_original = list(prelim)
-        while prelim:
-            x = prelim.pop()
-            target_cgi = x[0]
-            if target_cgi in final:
-                continue
-            if debug:
-                print("Finding nearest neighbor for %s" % target_cgi)
-            best_distance, closest_cgi = Utility.find_nearest_cgi(target_cgi,
-                                                                  prelim_original,
-                                                                  debug)
-            final[target_cgi] = {'distance': best_distance,
-                                 'nearest': closest_cgi}
-        return final
-
-    @classmethod
-    def find_nearest_cgi_OLD(cls, target_cgi, prelim_original, debug):
-        best_distance = 20037500  # ~1/2 circumfrence of the earth
-        closest_cgi = ""
-        for y in prelim_original:
-            if debug is True:
-                print("Searching for nearest to %s" % y[0])
-            if target_cgi in y and y[2] < best_distance:
-                best_distance = y[2]
-                if y[0] == target_cgi:
-                    closest_cgi = y[1]
-                else:
-                    closest_cgi = y[0]
-        if closest_cgi == "":
-            print("BIG PROBLEM FINDING CLOSEST_NEIGHBOR FOR %s" % target_cgi)
-            print("prelim_original = %s" % str(prelim_original))
-        return(best_distance, closest_cgi)
-
-    @classmethod
     def find_nearest_cgi(cls, neighbors, debug):
         best_distance = 0.0
         closest_cgi = ""
@@ -134,23 +94,6 @@ class Utility(object):
                 best_distance = neighbs_by_dist[1][1]
             except IndexError:
                 print("Unable to find neighbor!")
-        return(best_distance, closest_cgi)
-
-    @classmethod
-    def find_nearest_cgi_old(cls, neighbors, debug):
-        best_distance = 20037500  # ~1/2 circumfrence of the earth
-        closest_cgi = ""
-        for y in neighbors.items():
-            if y[1] == 0.0:
-                continue
-            elif y[1] > best_distance:
-                continue
-            else:
-                best_distance = y[1]
-                closest_cgi = y[0]
-        if closest_cgi == "":
-            print("BIG PROBLEM FINDING CLOSEST_NEIGHBOR!")
-            print("prelim_original = %s" % str(neighbors))
         return(best_distance, closest_cgi)
 
     @classmethod
