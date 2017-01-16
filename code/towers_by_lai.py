@@ -11,6 +11,7 @@ here_dir = os.path.dirname(os.path.abspath(__file__))
 source_data_dir = os.path.join(here_dir, '../data/source/')
 derived_data_dir = os.path.join(here_dir, '../data/derived/')
 kml_data_dir = os.path.join(derived_data_dir, 'kml/CGI_by_LAI/')
+kml_md_web_base = "https://github.com/sitch-io/lai-reports/blob/master/outliers/md/"
 lai_data_dir = os.path.join(derived_data_dir, 'lai/')
 ocid_file = os.path.join(source_data_dir, "cell_towers.csv.gz")
 outfile_columns = ["radio", "mcc", "net", "area", "cell", "unit", "lon", "lat",
@@ -54,10 +55,15 @@ def mcc_mnc_lac_from_filename(filename):
     lac = basename.split("-")[2]
     return(mcc, mnc, lac)
 
+def build_placemark_desc(mcc, mnc, lac):
+    f_name = "%s-%s-%s-neighbors.md" % (mcc, mnc, lac)
+    retval = "Outliers from this LAI: %s%s" % (kml_md_web_base, f_name)
+    return retval
+
 def dump_to_kml(lai_file):
     lai_obj = laiutils.OcidCsv(lai_file)
     kml_file = "%s.kml" % lai_file.replace('.csv.gz', '').replace("/lai/",
-                                                                  "/kml/")
+                                                                  "/kml/CGI_by_LAI/")
     kml_fld = KML.Folder()
     mcc, mnc, lac = mcc_mnc_lac_from_filename(lai_file)
     carrier_name = get_carrier_name(mcc, mnc)
@@ -65,7 +71,8 @@ def dump_to_kml(lai_file):
     for tower in lai_obj:
         coords = ",".join([tower["lon"], tower["lat"]])
         kml_fld.append(KML.Placemark(KML.name(cgi_from_ocid_row(tower)),
-                       KML.Point(KML.coordinates(coords))))
+                                     KML.Point(KML.coordinates(coords)),
+                                     KML.description(build_placemark_desc(mcc, mnc, lac))))
     with open(kml_file, 'w') as out_file:
         out_file.write(etree.tostring(kml_fld))
 
