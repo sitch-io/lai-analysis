@@ -7,21 +7,66 @@ file, pathname, description = imp.find_module(modulename, [modulepath])
 laiutils = imp.load_module(modulename, file, pathname, description)
 
 test_raw = [
-    {'updated': '1425766039', 'area': '58', 'lon': '-89.160927', 'created': '1414630393', 'mcc': '310', 'cell': '6097', 'averageSignal': '', 'range': '4105', 'radio': 'CDMA', 'samples': '13', 'lat': '40.311561', 'net': '4112', 'changeable': '1', 'unit': ''},
-    {'updated': '1414630527', 'area': '58', 'lon': '-89.169277', 'created': '1414630527', 'mcc': '310', 'cell': '1666', 'averageSignal': '', 'range': '0', 'radio': 'CDMA', 'samples': '1', 'lat': '40.311406', 'net': '4112', 'changeable': '1', 'unit': ''},
-    {'updated': '1425765974', 'area': '58', 'lon': '-89.161825', 'created': '1414659867', 'mcc': '310', 'cell': '6082', 'averageSignal': '', 'range': '2539', 'radio': 'CDMA', 'samples': '6', 'lat': '40.311987', 'net': '4112', 'changeable': '1', 'unit': ''},
-    {'updated': '1425760008', 'area': '58', 'lon': '-89.120056', 'created': '1425760008', 'mcc': '310', 'cell': '2321', 'averageSignal': '', 'range': '0', 'radio': 'CDMA', 'samples': '1', 'lat': '40.588591', 'net': '4112', 'changeable': '1', 'unit': ''},
-    {'updated': '1425764149', 'area': '58', 'lon': '-89.119942', 'created': '1425762248', 'mcc': '310', 'cell': '6081', 'averageSignal': '', 'range': '18', 'radio': 'CDMA', 'samples': '4', 'lat': '40.588557', 'net': '4112', 'changeable': '1', 'unit': ''},
-    {'updated': '1425762383', 'area': '58', 'lon': '-89.120133', 'created': '1425762383', 'mcc': '310', 'cell': '6099', 'averageSignal': '', 'range': '0', 'radio': 'CDMA', 'samples': '1', 'lat': '40.588592', 'net': '4112', 'changeable': '1', 'unit': ''},
-    {'updated': '1425765917', 'area': '58', 'lon': '-89.156099', 'created': '1425765914', 'mcc': '310', 'cell': '2322', 'averageSignal': '', 'range': '324', 'radio': 'CDMA', 'samples': '2', 'lat': '40.311767', 'net': '4112', 'changeable': '1', 'unit': ''},
-    {'updated': '1425772601', 'area': '58', 'lon': '-89.81093', 'created': '1425772419', 'mcc': '310', 'cell': '6147', 'averageSignal': '', 'range': '3033', 'radio': 'CDMA', 'samples': '5', 'lat': '40.301849', 'net': '4112', 'changeable': '1', 'unit': ''},
-    {'updated': '1425772726', 'area': '58', 'lon': '-89.855481', 'created': '1425772556', 'mcc': '310', 'cell': '6193', 'averageSignal': '', 'range': '2430', 'radio': 'CDMA', 'samples': '6', 'lat': '40.298498', 'net': '4112', 'changeable': '1', 'unit': ''},
-    {'updated': '1425772679', 'area': '58', 'lon': '-89.865195', 'created': '1425772679', 'mcc': '310', 'cell': '6163', 'averageSignal': '', 'range': '0', 'radio': 'CDMA', 'samples': '1', 'lat': '40.296426', 'net': '4112', 'changeable': '1', 'unit': ''},
-    {'updated': '1425772979', 'area': '58', 'lon': '-89.923868', 'created': '1425772766', 'mcc': '310', 'cell': '6194', 'averageSignal': '', 'range': '3120', 'radio': 'CDMA', 'samples': '5', 'lat': '40.297121', 'net': '4112', 'changeable': '1', 'unit': ''},
-    {'updated': '1425773931', 'area': '58', 'lon': '-90.175023', 'created': '1425773826', 'mcc': '310', 'cell': '2338', 'averageSignal': '', 'range': '1217', 'radio': 'CDMA', 'samples': '4', 'lat': '40.305361', 'net': '4112', 'changeable': '1', 'unit': ''},
-    {'updated': '1404765098', 'area': '58', 'lon': '-90.055299', 'created': '1404764717', 'mcc': '310', 'cell': '5054', 'averageSignal': '', 'range': '35', 'radio': 'CDMA', 'samples': '6', 'lat': '40.293858', 'net': '4112', 'changeable': '1', 'unit': ''},
-    {'updated': '1404761085', 'area': '58', 'lon': '-89.755461', 'created': '1404761036', 'mcc': '310', 'cell': '4842', 'averageSignal': '', 'range': '1260', 'radio': 'CDMA', 'samples': '4', 'lat': '40.304286', 'net': '4112', 'changeable': '1', 'unit': ''},
-    {'updated': '1405037065', 'area': '58', 'lon': '-88.544739', 'created': '1405037065', 'mcc': '310', 'cell': '8710', 'averageSignal': '', 'range': '0', 'radio': 'CDMA', 'samples': '1', 'lat': '42.088344', 'net': '4112', 'changeable': '1', 'unit': ''}
+    {'updated': '1425766039', 'area': '58', 'lon': '-89.160927',
+     'created': '1414630393', 'mcc': '310', 'cell': '6097',
+     'averageSignal': '', 'range': '4105', 'radio': 'CDMA', 'samples': '13',
+     'lat': '40.311561', 'net': '4112', 'changeable': '1', 'unit': ''},
+    {'updated': '1414630527', 'area': '58', 'lon': '-89.169277',
+     'created': '1414630527', 'mcc': '310', 'cell': '1666',
+     'averageSignal': '', 'range': '0', 'radio': 'CDMA', 'samples': '1',
+     'lat': '40.311406', 'net': '4112', 'changeable': '1', 'unit': ''},
+    {'updated': '1425765974', 'area': '58', 'lon': '-89.161825',
+     'created': '1414659867', 'mcc': '310', 'cell': '6082',
+     'averageSignal': '', 'range': '2539', 'radio': 'CDMA', 'samples': '6',
+     'lat': '40.311987', 'net': '4112', 'changeable': '1', 'unit': ''},
+    {'updated': '1425760008', 'area': '58', 'lon': '-89.120056',
+     'created': '1425760008', 'mcc': '310', 'cell': '2321',
+     'averageSignal': '', 'range': '0', 'radio': 'CDMA', 'samples': '1',
+     'lat': '40.588591', 'net': '4112', 'changeable': '1', 'unit': ''},
+    {'updated': '1425764149', 'area': '58', 'lon': '-89.119942',
+     'created': '1425762248', 'mcc': '310', 'cell': '6081',
+     'averageSignal': '', 'range': '18', 'radio': 'CDMA', 'samples': '4',
+     'lat': '40.588557', 'net': '4112', 'changeable': '1', 'unit': ''},
+    {'updated': '1425762383', 'area': '58', 'lon': '-89.120133',
+     'created': '1425762383', 'mcc': '310', 'cell': '6099',
+     'averageSignal': '', 'range': '0', 'radio': 'CDMA', 'samples': '1',
+     'lat': '40.588592', 'net': '4112', 'changeable': '1', 'unit': ''},
+    {'updated': '1425765917', 'area': '58', 'lon': '-89.156099',
+     'created': '1425765914', 'mcc': '310', 'cell': '2322',
+     'averageSignal': '', 'range': '324', 'radio': 'CDMA', 'samples': '2',
+     'lat': '40.311767', 'net': '4112', 'changeable': '1', 'unit': ''},
+    {'updated': '1425772601', 'area': '58', 'lon': '-89.81093',
+     'created': '1425772419', 'mcc': '310', 'cell': '6147',
+     'averageSignal': '', 'range': '3033', 'radio': 'CDMA', 'samples': '5',
+     'lat': '40.301849', 'net': '4112', 'changeable': '1', 'unit': ''},
+    {'updated': '1425772726', 'area': '58', 'lon': '-89.855481',
+     'created': '1425772556', 'mcc': '310', 'cell': '6193',
+     'averageSignal': '', 'range': '2430', 'radio': 'CDMA', 'samples': '6',
+     'lat': '40.298498', 'net': '4112', 'changeable': '1', 'unit': ''},
+    {'updated': '1425772679', 'area': '58', 'lon': '-89.865195',
+     'created': '1425772679', 'mcc': '310', 'cell': '6163',
+     'averageSignal': '', 'range': '0', 'radio': 'CDMA', 'samples': '1',
+     'lat': '40.296426', 'net': '4112', 'changeable': '1', 'unit': ''},
+    {'updated': '1425772979', 'area': '58', 'lon': '-89.923868',
+     'created': '1425772766', 'mcc': '310', 'cell': '6194',
+     'averageSignal': '', 'range': '3120', 'radio': 'CDMA', 'samples': '5',
+     'lat': '40.297121', 'net': '4112', 'changeable': '1', 'unit': ''},
+    {'updated': '1425773931', 'area': '58', 'lon': '-90.175023',
+     'created': '1425773826', 'mcc': '310', 'cell': '2338',
+     'averageSignal': '', 'range': '1217', 'radio': 'CDMA', 'samples': '4',
+     'lat': '40.305361', 'net': '4112', 'changeable': '1', 'unit': ''},
+    {'updated': '1404765098', 'area': '58', 'lon': '-90.055299',
+     'created': '1404764717', 'mcc': '310', 'cell': '5054',
+     'averageSignal': '', 'range': '35', 'radio': 'CDMA', 'samples': '6',
+     'lat': '40.293858', 'net': '4112', 'changeable': '1', 'unit': ''},
+    {'updated': '1404761085', 'area': '58', 'lon': '-89.755461',
+     'created': '1404761036', 'mcc': '310', 'cell': '4842',
+     'averageSignal': '', 'range': '1260', 'radio': 'CDMA', 'samples': '4',
+     'lat': '40.304286', 'net': '4112', 'changeable': '1', 'unit': ''},
+    {'updated': '1405037065', 'area': '58', 'lon': '-88.544739',
+     'created': '1405037065', 'mcc': '310', 'cell': '8710',
+     'averageSignal': '', 'range': '0', 'radio': 'CDMA', 'samples': '1',
+     'lat': '42.088344', 'net': '4112', 'changeable': '1', 'unit': ''}
     ]
 test_prelim_old = [
     ('310-4112-58-8710', '310-4112-58-6097', 68622.82728130736),
@@ -402,12 +447,18 @@ class TestUtility:
 
     def test_utility_create_preliminary_neighbors_struct(self):
         in_s = test_raw
-        out_s = laiutils.Utility.create_preliminary_neighbors_struct(in_s, True)
-        print out_s
-        assert out_s == test_prelim
+        out_s = laiutils.Utility.create_preliminary_neighbors_struct(in_s,
+                                                                     True)
+        out_str = {}
+        for x in out_s:
+            key = x.items()[0][0]
+            out_str[key] = x[key]
+        assert out_str == test_prelim
 
     def test_utility_transform_prelim_into_final(self):
-        in_s = test_prelim
-        out_s = laiutils.Utility.transform_prelim_into_final(in_s, True)
-        print out_s
-        assert out_s == test_final
+        for prelim in test_prelim.items():
+            tester = {prelim[0]: prelim[1]}
+            out_s = laiutils.Utility.transform_prelim_into_final(tester, True)
+            k, v = out_s.items()[0]
+            assert k in test_final
+            assert test_final[k] == v
