@@ -24,12 +24,9 @@ Place the OpenCellID database at `lai-analysis/data/source`.  It should be named
 decompressing or renaming it.
 
 
-This is written for Python 2.7.  Required modules:
+This is written for Python 2.7.  Required modules are in requirements.txt:
 
-* celery
-* haversine
-* pykml
-* twilio
+Install requirements: `pip install -r requirements.txt`
 
 The towers_by_lai file is the first stage.  It places the feed in files by LAI,
 ready to be processed by report_outliers.py.  
