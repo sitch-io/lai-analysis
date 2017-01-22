@@ -11,7 +11,7 @@ class Report(object):
                                                   carrier_name)
         lai_report += "| CGI | Nearest CGI | Distance |\n"
         lai_report += "|-----|-------------|----------|\n"
-        for cgi, relations in report.items():
+        for cgi, relations in sorted(report.items()):
             if relations['distance'] >= distance_threshold:
                 lai_report += Report.format_row(cgi, relations['nearest'],
                                                 relations['distance'], True)
