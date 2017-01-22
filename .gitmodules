@@ -1,6 +1,6 @@
 [submodule "data/derived/kml"]
 	path = data/derived/kml
-	url = git@github.com:sitch-io/lai-to-kml.git
+	url = https://github.com/sitch-io/lai-to-kml.git
 [submodule "reports"]
 	path = reports
-	url = git@github.com:sitch-io/lai-reports.git
+	url = https://github.com/sitch-io/lai-reports.git
