@@ -13,15 +13,22 @@ class Report(object):
         lai_report += "|-----|-------------|----------|\n"
         for cgi, relations in report.items():
             if relations['distance'] >= distance_threshold:
-                lai_report += "| **%s** | **%s** | **%s** |\n" % (cgi,
-                                                                  relations['nearest'],
-                                                                  relations['distance'])
+                lai_report += Report.format_row(cgi, relations['nearest'],
+                                                relations['distance'], True)
             else:
-                lai_report += "| %s | %s | %s |\n" % (cgi, relations['nearest'],
-                                                         relations['distance'])
+                lai_report += Report.format_row(cgi, relations['nearest'],
+                                                relations['distance'], False)
 
         with open(report_file_name.replace("csv", "md"), 'w') as markdown_file:
             markdown_file.write(lai_report)
+
+    @classmethod
+    def format_row(cls, cgi, nearest, distance, bold=False):
+        if bold:
+            s = "| **%s** | **%s** | **%s** |\n" % (cgi, nearest, distance)
+        else:
+            s = "| %s | %s | %s |\n" % (cgi, nearest, distance)
+        return s
 
     @classmethod
     def write_lai_report(cls, report, report_file_name):
