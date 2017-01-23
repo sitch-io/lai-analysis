@@ -12,7 +12,7 @@ def main():
     fp = laiutils.FeedProcessor(carrier_reference)
     base_path = os.path.dirname(os.path.abspath(__file__))
     file_list = [in_file for in_file in
-                 laiutils.Utility.get_source_files_from_dir(fp.source_dir)]
+                 laiutils.Utility.get_source_files_from_dir(fp.src_dir)]
     print len(file_list)
     for target_file in file_list:
         tasks.process_feed_file.delay(target_file, carrier_reference,
