@@ -3,7 +3,6 @@ import laiutils
 import opencellid
 import os
 import shutil
-import sys
 from lxml import etree
 from pykml.factory import KML_ElementMaker as KML
 
@@ -33,6 +32,7 @@ if ocid_api_key == "NOT_DETECTED":
     print "OpenCellID API key is not set.  Not attempting to update from web."
 else:
     ocid_feed_object.update_from_web()
+
 
 def get_carrier_name(mcc, mnc):
     carrier = "Unrecognized Carrier"
