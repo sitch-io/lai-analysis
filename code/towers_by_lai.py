@@ -1,7 +1,9 @@
 import gzip
 import laiutils
+import opencellid
 import os
 import shutil
+import sys
 from lxml import etree
 from pykml.factory import KML_ElementMaker as KML
 
@@ -17,8 +19,8 @@ ocid_file = os.path.join(source_data_dir, "cell_towers.csv.gz")
 outfile_columns = ["radio", "mcc", "net", "area", "cell", "unit", "lon", "lat",
                    "range", "samples", "changeable", "created", "updated",
                    "averageSignal"]
+ocid_api_key = os.getenv("OCID_API_KEY", "NOT_DETECTED")
 
-ocid_feed_object = laiutils.OcidCsv(ocid_file)
 twilio_object = laiutils.TwilioCarriers(os.getenv("TWILIO_SID"),
                                         os.getenv("TWILIO_TOKEN"))
 outfile_handler = laiutils.OutfileHandler(lai_data_dir, outfile_columns)
@@ -26,7 +28,11 @@ mcc_mnc_carrier_reference = twilio_object.get_providers_for_country("US")
 
 laiutils.OutfileHandler.ensure_path_exists(lai_data_dir)
 laiutils.OutfileHandler.ensure_path_exists(kml_data_dir)
-
+ocid_feed_object = opencellid.OpenCellIdFeed(source_data_dir, ocid_api_key)
+if ocid_api_key == "NOT_DETECTED":
+    print "OpenCellID API key is not set.  Not attempting to update from web."
+else:
+    ocid_feed_object.update_from_web()
 
 def get_carrier_name(mcc, mnc):
     carrier = "Unrecognized Carrier"
