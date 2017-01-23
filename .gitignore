@@ -1,3 +1,4 @@
+*.pyprof
 *.prof
 .cache
 *.pyc
