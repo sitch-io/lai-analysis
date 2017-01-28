@@ -1,6 +1,8 @@
 # LAI Study
 ## Using OpenCellID to determine geofence for LAI
 
+[![Join the chat at https://gitter.im/sitch-io/lai-analysis](https://badges.gitter.im/sitch-io/lai-analysis.svg)](https://gitter.im/sitch-io/lai-analysis?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Build Status](https://travis-ci.org/sitch-io/lai-analysis.svg?branch=master)](https://travis-ci.org/sitch-io/lai-analysis)
 
 There are two submodules to this git repo!
